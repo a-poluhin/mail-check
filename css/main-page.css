@@ -1,0 +1,30 @@
+.content {
+  width: 780px;
+  margin: 0 auto;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.title .text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.controls-button {
+  display: flex;
+  gap: 10px;
+}
+
+.link {
+  border: 1px solid;
+  color: black;
+  text-decoration: none;
+  padding: 3px 5px;
+}
