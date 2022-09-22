@@ -48,8 +48,10 @@
   color: black;
 }
 
-.serach-block {
-  padding: 0 40px;
+.subtitle {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .input-group.mb-3 {
@@ -68,10 +70,4 @@
   background: none;
   cursor: pointer;
   color: black;
-}
-
-.serach-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
