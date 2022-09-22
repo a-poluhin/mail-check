@@ -58,6 +58,7 @@
 .input-group > .form-control.search-input {
   border-color: black;
   border-right: none;
+  box-shadow: none;
 }
 .input-group .btn.search-button {
   border-color: black;
