@@ -58,7 +58,6 @@ function getCountry () {
         "Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-Api-Key': '2e1e2dddae2c6506c06e1094ae3e6de0'
       }
     }
   )
@@ -90,4 +89,5 @@ function getCountry () {
       }
     })
 }
+
 getCountry();
