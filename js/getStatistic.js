@@ -1,15 +1,64 @@
 const ctx = document.getElementById('myChart');
 
+const mockData = [
+  {"code":"RU","name":"Россия"},
+  {"code":"BY","name":"Республика Беларусь"},
+  {"code":"UA","name":"Украина"},
+  {"code":"KZ","name":"Казахстан"},
+  {"code":"US","name":"США"},
+  {"code":"GB","name":"Великобритания"},
+  {"code":"DE","name":"Германия"},
+  {"code":"CN","name":"Китай"},
+  {"code":"HK","name":"Гонконг"},
+  {"code":"MY","name":"Малайзия"},
+  {"code":"TH","name":"Таиланд"},
+  {"code":"AU","name":"Австралия"},
+  {"code":"AT","name":"Австрия"},
+  {"code":"AZ","name":"Азербайджан"},
+  {"code":"AL","name":"Албания"},
+  {"code":"DZ","name":"Алжир"},
+  {"code":"AI","name":"Ангилья"},
+  {"code":"AO","name":"Ангола"},
+  {"code":"AD","name":"Андорра"},
+  {"code":"AG","name":"Антигуа и Барбуда"},
+  {"code":"AR","name":"Аргентина"},
+  {"code":"AM","name":"Армения"},
+  {"code":"AW","name":"Аруба"},
+  {"code":"AF","name":"Афганистан"},
+  {"code":"BS","name":"Багамы"},
+  {"code":"BD","name":"Бангладеш"},
+  {"code":"BB","name":"Барбадос"},
+  {"code":"BH","name":"Бахрейн"},
+  {"code":"BZ","name":"Белиз"},
+  {"code":"BE","name":"Бельгия"},
+  {"code":"BJ","name":"Бенин"},
+  {"code":"BG","name":"Болгария"},
+  {"code":"BO","name":"Боливия"},
+  {"code":"BA","name":"Босния и Герцеговина"},
+  {"code":"BW","name":"Ботсвана"},
+  {"code":"BR","name":"Бразилия"},
+  {"code":"BN","name":"Бруней"},
+  {"code":"BF","name":"Буркина-Фасо"},
+  {"code":"BI","name":"Бурунди"},
+  {"code":"BT","name":"Бутан"}
+];
+
+function random_rgba() {
+  var o = Math.round, r = Math.random, s = 255;
+  return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
 function getCountry () {
   fetch(
     'https://moyaposylka.ru/api/v1/countries?api_key=[2e1e2dddae2c6506c06e1094ae3e6de0]',
     {
       method: "GET",
-      // mode: 'no-cors',
+      mode: 'no-cors',
       headers: {
         "Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'X-Api-Key': '2e1e2dddae2c6506c06e1094ae3e6de0'
       }
     }
   )
@@ -17,33 +66,17 @@ function getCountry () {
       return response.text();
     })
     .then((data) => {
-      const countries = data ? JSON.parse(data) : [];
-
-      if (countries) {
+      const countries = data ? JSON.parse(data) : mockData;
+      const slicedCountries = countries.slice(0, 10);
+      if (slicedCountries) {
         const myChart = new Chart(ctx, {
           type: 'bar',
           data: {
-              labels: countries.map((item) => item.name).slice(0, 6),
+              labels: slicedCountries.map((item) => item.name),
               datasets: [{
                   label: 'Данные за 2021 год',
-                  data: [12, 19, 3, 5, 2, 3],
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)'
-                  ],
-                  borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                      'rgba(54, 162, 235, 1)',
-                      'rgba(255, 206, 86, 1)',
-                      'rgba(75, 192, 192, 1)',
-                      'rgba(153, 102, 255, 1)',
-                      'rgba(255, 159, 64, 1)'
-                  ],
-                  borderWidth: 1
+                  data: slicedCountries.map(item => item.name.length),
+                  backgroundColor: slicedCountries.map(item => random_rgba()),
               }]
           },
           options: {
