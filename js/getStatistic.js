@@ -1,6 +1,15 @@
 const ctx = document.getElementById('myChart');
 
 const mockData = [
+  {"code":"BG","name":"Болгария"},
+  {"code":"BO","name":"Боливия"},
+  {"code":"BA","name":"Босния и Герцеговина"},
+  {"code":"BW","name":"Ботсвана"},
+  {"code":"BR","name":"Бразилия"},
+  {"code":"BN","name":"Бруней"},
+  {"code":"BF","name":"Буркина-Фасо"},
+  {"code":"BI","name":"Бурунди"},
+  {"code":"BT","name":"Бутан"},
   {"code":"RU","name":"Россия"},
   {"code":"BY","name":"Республика Беларусь"},
   {"code":"UA","name":"Украина"},
@@ -31,16 +40,7 @@ const mockData = [
   {"code":"BH","name":"Бахрейн"},
   {"code":"BZ","name":"Белиз"},
   {"code":"BE","name":"Бельгия"},
-  {"code":"BJ","name":"Бенин"},
-  {"code":"BG","name":"Болгария"},
-  {"code":"BO","name":"Боливия"},
-  {"code":"BA","name":"Босния и Герцеговина"},
-  {"code":"BW","name":"Ботсвана"},
-  {"code":"BR","name":"Бразилия"},
-  {"code":"BN","name":"Бруней"},
-  {"code":"BF","name":"Буркина-Фасо"},
-  {"code":"BI","name":"Бурунди"},
-  {"code":"BT","name":"Бутан"}
+  {"code":"BJ","name":"Бенин"}
 ];
 
 function random_rgba() {
@@ -50,7 +50,7 @@ function random_rgba() {
 
 function getCountry () {
   fetch(
-    'https://moyaposylka.ru/api/v1/countries?api_key=[2e1e2dddae2c6506c06e1094ae3e6de0]',
+    'https://moyaposylka.ru/api/v1/countries',
     {
       method: "GET",
       mode: 'no-cors',
