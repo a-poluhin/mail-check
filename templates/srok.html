@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Найти отделение</title>
+    <link rel="stylesheet" type="text/css" href="../css/select.css"/>
     <link href="../css/srok.css" rel="stylesheet" type="text/css">
     <!-- bootstrap -->
     <!-- CSS only -->
@@ -10,14 +11,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <!-- end bootstrap -->
     <script src="../js/theme.js" defer></script>
+    <script src="../js/internalization.js" defer></script>
   </head>
 
   <body>
     <div class="header-wrap">
       <div class="header">
-        <button class="header-button">Сменить язык</button>
-        <div class="header-number">Тех. поддержка +7 923 956 78 97</div>
-        <button class="header-button" id="theme-button">Сменить тему</button>
+        <select data-i18n-switcher class="locale-switcher">
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+        </select>
+        <div class="header-number" data-i18n-key="header.support">Тех. поддержка +7 923 956 78 97</div>
+        <button class="header-button" id="theme-button" data-i18n-key="header.change-theme">Сменить тему</button>
       </div>
     </div>
 

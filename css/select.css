@@ -1,0 +1,8 @@
+.locale-switcher {
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.locale-switcher:focus-visible {
+  outline: none;
+}
