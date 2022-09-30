@@ -48,10 +48,8 @@
   color: black;
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 10px;
+.serach-block {
+  padding: 0 40px;
 }
 
 .input-group.mb-3 {
@@ -72,11 +70,41 @@
   cursor: pointer;
   color: black;
 }
-.form {
 
-  flex-direction: column;
-  width: 10%;
+.serach-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.button{
-  margin-bottom: 10px;
+
+/* light theme */
+body.light .header-wrap {
+  background-color: grey;
+}
+
+/* dark theme */
+body.dark {
+  background: #515151;
+  color: white;
+  border-color: white;
+}
+
+body.dark .header-wrap {
+  background-color: white;
+}
+
+body.dark .link {
+  color: white;
+}
+
+body.dark .input-group > .form-control.search-input {
+  border-color: white;
+}
+
+body.dark .input-group .btn.search-button {
+  border-color: white;
+  color: white;
+}
+body.dark .input-group .btn.search-button:hover {
+  color: white;
 }
