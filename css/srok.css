@@ -73,25 +73,10 @@
   color: black;
 }
 .form {
+
   flex-direction: column;
   width: 10%;
 }
 .button{
   margin-bottom: 10px;
-}
-
-/* light theme */
-body.light .header-wrap {
-  background-color: grey;
-}
-
-/* dark theme */
-body.dark {
-  background: #515151;
-  color: white;
-  border-color: white;
-}
-
-body.dark .header-wrap {
-  background-color: white;
 }
