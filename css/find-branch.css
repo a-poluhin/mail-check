@@ -73,3 +73,37 @@
   color: black;
 }
 
+/* light theme */
+body.light .header-wrap {
+  background-color: grey;
+}
+
+/* dark theme */
+body.dark {
+  background: #515151;
+  border-color: white;
+}
+
+body.dark .header-wrap {
+  background-color: white;
+}
+
+body.dark .content {
+  color: white;
+}
+
+body.dark .link {
+  color: white;
+}
+
+body.dark .input-group > .form-control.search-input {
+  border-color: white;
+}
+
+body.dark .input-group .btn.search-button {
+  border-color: white;
+  color: white;
+}
+body.dark .input-group .btn.search-button:hover {
+  color: white;
+}

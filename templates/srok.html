@@ -17,7 +17,7 @@
       <div class="header">
         <button class="header-button">Сменить язык</button>
         <div class="header-number">Тех. поддержка +7 923 956 78 97</div>
-        <button class="header-button">Сменить тему</button>
+        <button class="header-button" id="theme-button">Сменить тему</button>
       </div>
     </div>
 
@@ -33,15 +33,36 @@
         </div>
       </div>
 
-      <form action="/action"> 
-        <div class="form">
-          Ваш телефон: <input type="text" name="firstname" value="">
-          Откуда:<input type="text" name="lastname" value="">
-          Куда:<input type="text" name="lastname" value="">
+      <form action="/action" class="form">
+        <table class="form-table">
+          <colgroup>
+            <col span="1" style="min-width: 150px;">
+            <col span="1">
+         </colgroup>
 
-          <input type="submit" value="Отправить">
-        </div>
-      </form> 
+          <tbody>
+            <tr>
+              <td>Ваш телефон:</td>
+              <td><input type="text" name="firstname" value="" /></td>
+            </tr>
+
+            <tr>
+              <td>Откуда:</td>
+              <td><input type="text" name="lastname" value="" /></td>
+            </tr>
+
+            <tr>
+              <td>Куда:</td>
+              <td><input type="text" name="lastname" value="" /></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td class="cell-with-button"><input type="submit" value="Отправить"></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
   </body>
 </html>
