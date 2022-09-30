@@ -1,7 +1,5 @@
-const defaultLocale = "en";
-
+const defaultLocale = "ru";
 let locale;
-
 let translations = {};
 
 getValueByString = function(o, s) {
@@ -26,15 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function setLocale(newLocale) {
   if (newLocale === locale) return;
-  const newTranslations =
-    await fetchTranslationsFor(newLocale);
+  const newTranslations = await fetchTranslationsFor(newLocale);
   locale = newLocale;
   translations = newTranslations;
   translatePage();
 }
 
 async function fetchTranslationsFor(newLocale) {
-  const response = await fetch(`locales/${newLocale}/translation.json`, {
+  const jsonPath = window.location.pathname.contains('templates')
+    ? `../locales/${newLocale}/translation.json`
+    : `locales/${newLocale}/translation.json`;
+  const response = await fetch(jsonPath, {
     headers: {
       'Content-Security-Policy': 'sandbox',
     }
