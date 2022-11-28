@@ -4,10 +4,11 @@ const searchInput = document.getElementById('search-input');
 const searchTracker = () => {
   const trackNumber = searchInput && searchInput.value
   if (trackNumber) {
-    const url = `https://gdeposylka.ru/api/v4/tracker/detect/${trackNumber}`;
+    // const url = `https://gdeposylka.ru/api/v4/tracker/detect/${trackNumber}`;
+    const url2 = `http://127.0.0.1:3000/find-track/${trackNumber}`;
 
     fetch(
-      url,
+      url2,
       {
         method: "GET",
         // mode: 'no-cors',

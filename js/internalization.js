@@ -31,7 +31,7 @@ async function setLocale(newLocale) {
 }
 
 async function fetchTranslationsFor(newLocale) {
-  const jsonPath = window.location.pathname.contains('templates')
+  const jsonPath = window.location.pathname.includes('templates')
     ? `../locales/${newLocale}/translation.json`
     : `locales/${newLocale}/translation.json`;
   const response = await fetch(jsonPath, {

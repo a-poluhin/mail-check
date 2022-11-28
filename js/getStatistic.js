@@ -49,45 +49,72 @@ function random_rgba() {
 }
 
 function getCountry () {
-  fetch(
-    'https://moyaposylka.ru/api/v1/countries',
-    {
-      method: "GET",
-      mode: 'no-cors',
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    }
-  )
-    .then((response) => {
-      return response.text();
-    })
-    .then((data) => {
-      const countries = data ? JSON.parse(data) : mockData;
-      const slicedCountries = countries.slice(0, 10);
-      if (slicedCountries) {
-        const myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: slicedCountries.map((item) => item.name),
-              datasets: [{
-                  label: 'Данные за 2021 год',
-                  data: slicedCountries.map(item => item.name.length),
-                  backgroundColor: slicedCountries.map(item => random_rgba()),
-              }]
-          },
-          options: {
-              scales: {
-                  y: {
-                      beginAtZero: true
-                  }
-              }
-          }
-        });
-      }
-    })
+  // get('https://moyaposylka.ru/api/v1/countries', (response) => {
+  //   debugger
+  //   const countries = response ? JSON.parse(response) : mockData;
+  //   const slicedCountries = countries.slice(0, 10);
+  //   if (slicedCountries) {
+  //     const myChart = new Chart(ctx, {
+  //       type: 'bar',
+  //       data: {
+  //           labels: slicedCountries.map((item) => item.name),
+  //           datasets: [{
+  //               label: 'Данные за 2021 год',
+  //               data: slicedCountries.map(item => item.name.length),
+  //               backgroundColor: slicedCountries.map(item => random_rgba()),
+  //           }]
+  //       },
+  //       options: {
+  //           scales: {
+  //               y: {
+  //                   beginAtZero: true
+  //               }
+  //           }
+  //       }
+  //     });
+  //   }
+  // })
+
+  // fetch(
+  //   'https://moyaposylka.ru/api/v1/countries',
+  //   {
+  //     method: "GET",
+  //     // mode: 'no-cors',
+  //     headers: {
+  //       "Access-Control-Allow-Origin": "*",
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'X-Api-Key': '2e1e2dddae2c6506c06e1094ae3e6de0',
+  //     }
+  //   }
+  // )
+  //   .then((response) => {
+  //     return response.text();
+  //   })
+  //   .then((data) => {
+  //     const countries = data ? JSON.parse(data) : mockData;
+  //     const slicedCountries = countries.slice(0, 10);
+  //     if (slicedCountries) {
+  //       const myChart = new Chart(ctx, {
+  //         type: 'bar',
+  //         data: {
+  //             labels: slicedCountries.map((item) => item.name),
+  //             datasets: [{
+  //                 label: 'Данные за 2021 год',
+  //                 data: slicedCountries.map(item => item.name.length),
+  //                 backgroundColor: slicedCountries.map(item => random_rgba()),
+  //             }]
+  //         },
+  //         options: {
+  //             scales: {
+  //                 y: {
+  //                     beginAtZero: true
+  //                 }
+  //             }
+  //         }
+  //       });
+  //     }
+  //   })
 }
 
 getCountry();
