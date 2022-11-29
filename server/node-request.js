@@ -1,55 +1,14 @@
-// const http = require("http");
+const http = require("http");
 const https = require("https");
 
-const hostname = '127.0.0.1';
-// const port = 3000;
-
+const cors = require('cors')
 const express = require('express');
 const app = express();
 const port = 3000;
 
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Request-Method', '*');
-//   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-//   res.setHeader('Access-Control-Allow-Headers', '*');
-
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello, World!\n');
-// });
-
-// server.listen(port, hostname, (req, res) => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-
-//   if (res) {
-//     process.stdout.write('Tumba')
-//     res.end('Tumba\n');
-//     switch (req.url) {
-//       case '/find-track':
-//           const queryObject = url.parse(req.url, true).query;
-//           const url = `https://gdeposylka.ru/api/v4/tracker/detect/${queryObject.trackNumber}`;
-          
-//           https.get(url, (response) => {
-//             console.log('statusCode:', response.statusCode);
-//             console.log('headers:', response.headers);
-  
-//             response.on('data', (d) => {
-//               res.writeHead(200);
-//               res.setHeader("Content-Type", "application/json");
-//               res.end(d);
-//             });
-//           })
-//           .on('error', (e) => {
-//             console.error(e);
-//           });
-//           break
-//       default:
-//           res.writeHead(404);
-//           res.end(JSON.stringify({error:"Resource not found"}));
-//     }
-//   }
-// });
+app.use(cors({
+  origin: '*',
+}))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -59,13 +18,12 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-app.get('/find-track/:trackId', (req, res) => {
+app.get('/find-track/:trackId', async (req, res) => {
   const trackId = req.params.trackId;
-  res.send(`track: ${trackId}`)
 
   var options = {
-    // host: 'requestb.in',
-    // port: 80,
+    host: 'moyaposylka.ru',
+    port: 443,
     path: `https://moyaposylka.ru/api/v1/carriers/${trackId}`,
     method: 'GET',
     headers: {
@@ -78,6 +36,7 @@ app.get('/find-track/:trackId', (req, res) => {
   const httpsreq = https.request(options, function (response) {
     response.setEncoding('utf8');
     response.on('error', (err) => {
+      console.log("err");
       res.json(err);
     })
     response.on('data', function (data) {
@@ -85,9 +44,38 @@ app.get('/find-track/:trackId', (req, res) => {
       res.json(data);
     });
     response.on('end', function() {
+      console.log("ok");
       res.send('ok');
     })
   });
 
+  httpsreq.end();
 
+  // var options = {
+  //   host: 'api.trackru.ru',
+  //   port: 80,
+  //   path: 'http://api.trackru.ru/v1/carriers/',
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'Api-Key': '8890bff2-2494-4213-8b6e-7a1282d478a3',
+  //   }
+  // };
+
+  // const httpreq = http.request(options, function (response) {
+  //   response.setEncoding('utf8');
+  //   response.on('error', (err) => {
+  //     console.log("err: ", err);
+  //   })
+  //   response.on('data', function (data) {
+  //     console.log("body: ", data);
+  //     res.json(data);
+  //   });
+  //   response.on('end', function() {
+  //     console.log('ok');
+  //     res.end();
+  //   })
+  // });
+
+  // httpreq.end();
 })
