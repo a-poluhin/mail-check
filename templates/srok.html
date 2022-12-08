@@ -12,6 +12,7 @@
     <!-- end bootstrap -->
     <script src="../js/theme.js" defer></script>
     <script src="../js/internalization.js" defer></script>
+    <script src="../js/calc-price.js" defer></script>
   </head>
 
   <body>
@@ -38,7 +39,7 @@
         </div>
       </div>
 
-      <form action="/action" class="form">
+      <div class="form">
         <table class="form-table">
           <colgroup>
             <col span="1" style="min-width: 150px;">
@@ -48,26 +49,28 @@
           <tbody>
             <tr>
               <td>Ваш телефон:</td>
-              <td><input type="text" name="firstname" value="" /></td>
+              <td><input type="text" id="phone-number" value="" /></td>
             </tr>
 
             <tr>
               <td>Откуда:</td>
-              <td><input type="text" name="lastname" value="" /></td>
+              <td><input type="text" id="from" value="" /></td>
             </tr>
 
             <tr>
               <td>Куда:</td>
-              <td><input type="text" name="lastname" value="" /></td>
+              <td><input type="text" id="to" value="" /></td>
             </tr>
 
             <tr>
               <td></td>
-              <td class="cell-with-button"><input type="submit" value="Отправить"></td>
+              <td class="cell-with-button"><button id="calc-button">Отправить</button></td>
             </tr>
           </tbody>
         </table>
-      </form>
+      </div>
+
+      <div id="calc-result"></div>
     </div>
   </body>
 </html>

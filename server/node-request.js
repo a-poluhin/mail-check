@@ -69,9 +69,37 @@ app.get('/find-by-track/:carrier/:trackId', async (req, res) => {
       res.json(err);
     })
     response.on('data', function (data) {
-      console.log("httpsreq2 body: " + data);
       res.json(data);
     });
   });
   httpsreq2.end();
+})
+
+app.get('/calc-price/:fromCode/:toCode', async (req, res) => {
+  const from = req.params.fromCode;
+  const to = req.params.toCode;
+
+  var options3 = {
+    host: 'postprice.ru',
+    port: 443,
+    path: `https://postprice.ru/engine/russia/api.php?from=${from}&to=${to}`,
+    method: 'GET',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Content-Type': 'application/json',
+    }
+  };
+
+  const httpsreq3 = https.request(options3, function (response) {
+    response.setEncoding('utf8');
+    response.on('error', (err) => {
+      console.log("err");
+      res.json(err);
+    })
+    response.on('data', function (data) {
+      console.log("httpsreq3 body: " + data);
+      res.json(data);
+    });
+  });
+  httpsreq3.end();
 })

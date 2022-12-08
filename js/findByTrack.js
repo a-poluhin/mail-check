@@ -39,7 +39,6 @@ const searchTracker = () => {
           return response.json();
         }).then((data) => {
           const resultData = JSON.parse(data);
-          console.log('resultData: ', resultData);
           
           const date = new Date(resultData.createdAt).toLocaleString('ru-RU');
           searchResult.innerHTML = `
