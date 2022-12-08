@@ -12,6 +12,7 @@
     <!-- end bootstrap -->
     <script src="../js/theme.js" defer></script>
     <script src="../js/internalization.js" defer></script>
+    <script src="../js/findBranch.js" defer></script>
   </head>
   <body>
     <div class="header-wrap">
@@ -47,10 +48,13 @@
             placeholder="Ваш адрес или индекс отделения"
             aria-label="Your address or branch code"
             aria-describedby="button-addon2"
+            id="find-branch-input"
           >
-          <button class="btn btn-outline-secondary search-button" type="button" id="button-addon2">Найти</button>
+          <button class="btn btn-outline-secondary search-button" type="button" id="find-branch-button">Найти</button>
         </div>
       </div>
-    </div>   
+
+      <div id="find-branch-result"></div>
+    </div>
   </body>
 </html>

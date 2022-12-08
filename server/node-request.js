@@ -97,9 +97,39 @@ app.get('/calc-price/:fromCode/:toCode', async (req, res) => {
       res.json(err);
     })
     response.on('data', function (data) {
-      console.log("httpsreq3 body: " + data);
       res.json(data);
     });
   });
   httpsreq3.end();
 })
+
+// app.get('/find-branch/:findBranch', async (req, res) => {
+//   const findBranch = req.params.findBranch;
+//   console.log("findBranch", findBranch)
+
+//   var options4 = {
+//     // host: 'suggestions.dadata.ru',
+//     // port: 443,
+//     path: `https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/postal_unit`,
+//     method: 'POST',
+//     headers: {
+//       "Access-Control-Allow-Origin": "*",
+//       'Content-Type': 'application/json',
+//       "Authorization": "Token c96dc9bec0307872f1f8df4e35fc7339ef7fbfba",
+//     },
+//     body: JSON.stringify({query: findBranch})
+//   };
+
+//   const httpsreq4 = https.request(options4, function (response) {
+//     response.setEncoding('utf8');
+//     response.on('error', (err) => {
+//       console.log("err");
+//       res.json(err);
+//     })
+//     response.on('data', function (data) {
+//       console.log("httpsreq4 body: " + data);
+//       res.json(data);
+//     });
+//   });
+//   httpsreq4.end();
+// })
