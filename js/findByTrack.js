@@ -49,11 +49,11 @@ const searchTracker = () => {
               </tr>
               <tr>
                 <td>Получатель</td>
-                <td>${resultData.attributes.recipient}</td>
+                <td>${resultData.attributes && resultData.attributes.recipient}</td>
               </tr>
               <tr>
                 <td>Адресовано</td>
-                <td>${resultData.attributes.destinationAddress}</td>
+                <td>${resultData.attributes && resultData.attributes.destinationAddress}</td>
               </tr>
               <tr>
                 <td>Добавлена на сайт</td>
